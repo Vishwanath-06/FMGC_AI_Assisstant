@@ -1,0 +1,9 @@
+streamlit==1.36.0
+pandas==2.2.2
+numpy==1.26.4
+SQLAlchemy==2.0.31
+langchain==0.2.14
+langchain-community==0.2.12
+langchain-core==0.2.33
+langchain-openai==0.1.22
+langchain-google-genai==1.0.8
