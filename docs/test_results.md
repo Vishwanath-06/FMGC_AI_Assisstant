@@ -71,8 +71,52 @@ We ran direct SQL queries against the local `fmcg_data.db` to verify the AI assi
 
 ---
 
+## App & Agent Integration Testing
+To ensure the conversational AI components are correctly wired to the data, we ran automated integration tests against the Streamlit UI and LangChain Agent framework (`test_app_and_agent.py`).
+
+---
+
+### Feature 5: Database Structure & Row Counts
+**What was tested**: Do all tables exist and contain the correct order of magnitude of records to support meaningful LLM inference?
+**Status**: PASSED
+
+**Sample Output**:
+```text
+  - product_master: 20 rows
+  - store_master: 50 rows
+  - sales_and_promotions: 24000 rows
+  - inventory: 24000 rows
+```
+
+---
+
+### Feature 6: LLM Agent Initialization (Text-to-SQL logic)
+**What was tested**: Can the LangChain SQL Agent correctly bind to the local SQLite DB and initialize with the required FMCG domain context using both Google Gemini and OpenAI providers?
+**Status**: PASSED
+
+**Sample Output**:
+```text
+Both OpenAI and Google Gemini agents initialized successfully, correctly binding to the SQLite DB and injecting the FMCG domain prompt.
+```
+
+---
+
+### Feature 7: Streamlit UI Functionality & Chat Interface
+**What was tested**: Does the web app load without crashing? Does the chat interface intercept user prompts and correctly enforce API key validation?
+**Status**: PASSED
+
+**Sample Output**:
+```text
+Streamlit UI loads correctly. Title verified. Chat interface accurately intercepts user prompts and enforces API Key validation before attempting LLM queries.
+```
+
+---
+
 ## Final Status Report
 - Promotional performance: **PASSED**
 - Inventory movement: **PASSED**
 - Regional sales: **PASSED**
 - Product-level campaign impact: **PASSED**
+- DB Structure & Rows: **PASSED**
+- Agent Initialization: **PASSED**
+- Streamlit UI & Chat: **PASSED**
