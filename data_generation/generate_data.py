@@ -105,8 +105,12 @@ for _, store in store_df.iterrows():
             # Inventory receiving logic (restock when low)
             units_received = 0
             if current_stock < demand * 1.5:
-                # Restock enough for ~3 weeks of average demand
-                units_received = int((base_demand * 3) + np.random.uniform(20, 50))
+                # 5% chance of supply chain issue causing zero restock
+                if np.random.random() < 0.05:
+                    units_received = 0
+                else:
+                    # Restock enough for ~3 weeks of average demand
+                    units_received = int((base_demand * 3) + np.random.uniform(20, 50))
                 
             opening_stock = current_stock
             
